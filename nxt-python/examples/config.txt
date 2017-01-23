@@ -1,0 +1,6 @@
+[Brick]
+name = NXT
+host = 00:16:53:0D:B2:B0
+strict = 0
+method = usb=False, bluetooth=True, fantomusb=False
+
