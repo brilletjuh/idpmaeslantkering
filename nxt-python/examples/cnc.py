@@ -8,7 +8,7 @@
 
 import nxt, threading as thread, time
 from nxt.locator import Method
-b = nxt.find_one_brick(method = Method(usb = False, bluetooth = True), debug = True, confpath = "config.txt", strict = False)
+b = nxt.find_one_brick(method = Method(usb = True, bluetooth = False), debug = True, confpath = "config.txt", strict = False)
 mx = nxt.Motor(b, nxt.PORT_A)
 my = nxt.Motor(b, nxt.PORT_B)
 motors = [mx, my]

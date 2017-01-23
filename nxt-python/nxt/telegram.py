@@ -55,6 +55,9 @@ class Telegram(object):
             self.add_u8(typ)
             self.add_u8(opcode)
 
+    def tostring(self):
+        return self.pkt.getvalue()
+
     def __str__(self):
         return self.pkt.getvalue()
 
@@ -71,7 +74,7 @@ class Telegram(object):
         self.pkt.write(pack('<b', v))
 
     def add_u8(self, v):
-        self.pkt.write(pack('<B', v))
+        self.pkt.write(pack('<B', v).decode('cp1252'))
 
     def add_s16(self, v):
         self.pkt.write(pack('<h', v))
