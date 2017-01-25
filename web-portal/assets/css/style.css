@@ -17,6 +17,8 @@ html, body{
     display: block;
     font-family: Ubuntu-Regular;
     font-size: 16px;
+    margin: 0;
+    background-color: #bdc3c7;
 }
 
 body.login-wallpaper{
@@ -99,4 +101,189 @@ li.logo{
 li.logo > label{
     font-family: Ubuntu-Light;
     color: #474747;
+}
+
+div.dashboard-container{
+    max-width: 1128px;
+    width: 1128px;
+    margin: auto;
+}
+
+div.card{
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+
+}
+
+div.card-small {
+    max-width: 210px;
+    width: 210px;
+    max-height: 121px;
+    min-height: 81px;
+}
+
+div.card-medium {
+    max-width: 460px;
+    width: 460px;
+    min-height: 81px;
+}
+
+div.card-large {
+    max-width: 1048px;
+    width: 1048px;
+}
+
+div.card > div.card-title{
+    color: #7f8c8d;
+    width: 100%;
+    font-size: 14px;
+}
+label.server-status{
+    float: right;
+    margin-top: 30px;
+    font-family: Ubuntu-Bold;
+}
+img.server-icon{
+    float: left;
+    margin: 15px 15px 0px 20px;
+    max-width: 50px;
+}
+
+label.server-on{
+    color: #2ecc71;
+}
+
+label.server-off{
+    color: #e74c3c;
+}
+
+div.waterstand-container{
+    float: left;
+    margin-top: 20px;
+    color: #bdc3c7;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+
+div.waterstand-container > label{
+    font-size: 16px;
+}
+
+div.waterstand-container > label#waterstand{
+    font-size: 35px;
+    color: #3498db;
+    margin-left: 20px;
+}
+
+div.card.buienradar{
+    height: auto;
+    min-height: 540px;
+    max-height: 540px;
+}
+
+img.weerrapport-single{
+    height: 300px;
+    width: 300px;
+}
+
+ul.weerrapport-menu{
+    list-style: none;
+    margin: 20px 0 0 0;
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+
+ul.weerrapport-menu > li:first-child{
+    border-top: none !important;
+}
+
+ul.weerrapport-menu > li{
+    border-top: 1px solid #e5f0f9;
+    padding: 12px;
+    font-size: 14px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+ul.weerrapport-menu > li:hover{
+    background-color: #ecf0f1;
+}
+
+ul.weerrapport-menu > li.active{
+    background-color: #e5f0f9;
+    color: #01689b;
+}
+
+div.weerrapport-container{
+    margin-top: 20px;
+    position: relative;
+    float: left;
+}
+
+div.weerrapport-container > .single-tab{
+    position: absolute;
+    display: none;
+}
+div.weerrapport-container > .single-tab.active{
+    display: block;
+}
+
+div.weerrapport-container > .single-tab > img{
+    max-width: 460px;
+}
+
+ul.informatie-lijst{
+    float: left;
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 14px;
+    width: 100%;
+}
+
+ul.informatie-lijst > li{
+    width: 100%;
+    margin-top: 10px;
+}
+
+ul.informatie-lijst > li > div.informatie-status{
+    text-align: center;
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-family: Ubuntu-Bold;
+    background-color: #e5f0f9;
+    color: #01689b;
+}
+
+div.button-close-open{
+    border-radius: 5px;
+    background-color: #e74c3c;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    user-select: none;
+}
+
+div.button-close-open:hover{
+    background-color: #c0392b;
+}
+
+div.button-close-open:active{
+    background-color: #8d2c21;
 }
