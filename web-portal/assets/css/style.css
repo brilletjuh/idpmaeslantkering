@@ -1,0 +1,102 @@
+/* Author: Matthias Krijgsman */
+
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url(../font/Ubuntu-Regular.ttf);
+}
+@font-face {
+    font-family: Ubuntu-Light;
+    src: url(../font/Ubuntu-Light.ttf);
+}
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url(../font/Ubuntu-Bold.ttf);
+}
+
+html, body{
+    display: block;
+    font-family: Ubuntu-Regular;
+    font-size: 16px;
+}
+
+body.login-wallpaper{
+    background-image: url('../img/wallpaper.png');
+    background-position: center;
+}
+
+div.login-container{
+    background-color: #fff;
+    width: 600px;
+    position: absolute;
+    top: 0;
+    left: -600px;
+    bottom: 0;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    -webkit-transition: left 1s ease-in-out;
+    -moz-transition: left 1s ease-in-out;
+    -ms-transition: left 1s ease-in-out;
+    -o-transition: left 1s ease-in-out;
+    transition: left 1s ease-in-out;
+}
+
+ul.login-elements{
+    list-style: none;
+    margin: 100px auto 0 auto;
+    width: 300px;
+    padding: 0;
+}
+
+ul.login-elements > li{
+    width: 100%;
+    margin-top: 20px;
+}
+
+ul.login-elements > li > input{
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+ul.login-elements > li > button{
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3498db;
+    padding: 10px 40px;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -ms-transition: background-color 0.3s ease-in-out;
+    -o-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+}
+
+ul.login-elements > li > button:hover{
+    background-color: #2a75a7;
+}
+
+div.login-warning{
+    border: 1px solid #c0392b;
+    background-color: #e74c3c;
+    color: #fff;
+    font-family: Ubuntu-Regular;
+    font-size: 12px;
+    padding: 10px;
+}
+li.logo{
+    font-family: Ubuntu-Bold;
+    font-size: 30px;
+    color: #3498db;
+    padding-bottom: 20px;
+}
+li.logo > label{
+    font-family: Ubuntu-Light;
+    color: #474747;
+}
