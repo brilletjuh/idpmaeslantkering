@@ -1,7 +1,16 @@
 <?php
 /* Author: Matthias Krijgsman */
-require_once '../config.php';
+session_start();
 require_once '../sessionController.php';
+
+if($_GET['a'] == 'logout'){
+    $sessionController->logout();
+    header("Location: ../");
+}
+
+if(!$sessionController->checkAuthorization()){
+    header("Location: ../");
+}
 
 ?>
 
@@ -10,26 +19,29 @@ require_once '../sessionController.php';
 <head>
     <title>Maeslantkering - Web Portaal</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
 </head>
 
 <body class="dashboard">
+
+
     <div class="dashboard-container">
 
         <div class="card card-small">
             <div class="card-title">Server 1 status</div>
             <img id="serverstatus1" src="../assets/img/server-on.png" class="server-icon">
-            <label id="server1" class="server-status server-on">Server Online</label>
+            <label id="server1" class="server-status server-on">Loading...</label>
         </div>
 
         <div class="card card-small">
             <div class="card-title">Server 2 status</div>
             <img id="serverstatus2" src="../assets/img/server-off.png" class="server-icon">
-            <label id="server2" class="server-status server-off">Server Offline</label>
+            <label id="server2" class="server-status server-off">Loading...</label>
         </div>
 
         <div class="card card-medium">
             <div class="card-title">Sensor 1 status</div>
-            <div class="waterstand-container">WATERSTAND: <label id="waterstand">12.53</label><label> meter</label></div>
+            <div class="waterstand-container">WATERSTAND: <label id="waterstand">xx.xx</label><label> meter</label></div>
         </div>
 
         <div class="card card-small buienradar">
@@ -61,14 +73,15 @@ require_once '../sessionController.php';
         <div class="card card-small buienradar">
             <div class="card-title">Informatie</div>
             <ul class="informatie-lijst">
+                <li class="text-center"><a href="?a=logout" class="informatie-uitloggen">Uitloggen<i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
                 <li><label>Status deuren:</label></li>
-                <li><div class="informatie-status">Open</div></li>
-                <li><label>Weer:</label></li>
-                <li><div class="informatie-status">Normaal</div></li>
+                <li><div class="informatie-status" id="status-deur">Loading...</div></li>
+                <li><label>Windkracht:</label></li>
+                <li><div class="informatie-status" id="windkracht-status-text">Loading...</div></li>
                 <li><label>Waterstand:</label></li>
-                <li><div class="informatie-status">Normaal</div></li>
+                <li><div class="informatie-status" id="waterstand-status-text">Loading...</div></li>
                 <li style="margin-top: 40px;"><label>Handmatig Sluiten:</label></li>
-                <li><div class="button-close-open">Sluiten</div></li>
+                <li><div class="button-close-open" id="button-deur">Close</div></li>
             </ul>
         </div>
 

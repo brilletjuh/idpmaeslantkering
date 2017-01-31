@@ -1,7 +1,17 @@
 /* Author: Matthias Krijgsman */
 
+/*
+* Maximale waterstand (cm) en windkracht (km/u)
+* voord de deuren om automatisch te sluiten
+* */
+var waterstandMAX = 1550;
+var windkrachtMAX = 78.2;
+
+var waterstand = 0;
+var windkracht = 0;
 
 $(document).ready(function(){
+    var globalRefresher = setInterval(refreshAll, 3000);
     $(".login-container").css('left', '0');
 });
 
@@ -10,6 +20,17 @@ $(".weerrapport-menu > li").click(function(){
     $(this).addClass('active');
     $(".single-tab[tab='"+$(this).attr('tab')+"']").addClass('active');
 });
+
+$(".button-close-open").click(function(){
+   setDeur();
+});
+
+function refreshAll(){
+    getServerStatus();
+    getWaterstand();
+    getDeur();
+    getWeer();
+}
 
 function resetTabView(){
     $(".single-tab").each(function(){
@@ -20,6 +41,98 @@ function resetTabView(){
     });
 }
 
+function getServerStatus(){
+    $.ajax({
+        url: '../../update/getServerStatus.php', success: function(result){
+            var x = result.split(',');
+            if(x[0] == "OFFLINE"){
+                veranderServerStatus(1, false);
+            }else{
+                veranderServerStatus(1, true);
+            }
+            if(x[1] == "OFFLINE"){
+                veranderServerStatus(2, false);
+            }else{
+                veranderServerStatus(2, true);
+            }
+        }});
+}
+
+function getWaterstand(){
+    $.ajax({
+        url: '../../update/getWaterstand.php', success: function(result){
+
+            veranderWaterstand(parseInt(result));
+
+            var w = parseInt(result);
+            waterstand = w;
+            if(w == 0){
+                $("#waterstand-status-text").text("Das pech, water weg");
+            }
+
+            if(w > 0){
+                $("#waterstand-status-text").text("Zeer Laag");
+            }
+
+            if(w > 500){
+                $("#waterstand-status-text").text("Laag");
+            }
+
+            if(w > 1000){
+                $("#waterstand-status-text").text("Normaal");
+            }
+
+            if(w > 1500){
+                $("#waterstand-status-text").text("Hoog");
+            }
+
+            if(w > 2000){
+                $("#waterstand-status-text").text("Extreem hoog");
+            }
+
+            if(w > 9000){
+                $("#waterstand-status-text").text("R.I.P. Nederland");
+            }
+
+        }});
+}
+
+function getDeur(){
+    $.ajax({
+        url: '../../update/getDeur.php', success: function(result){
+            if(result == "OPEN"){
+                $("#status-deur").text("Closed");
+                $('#button-deur').removeClass("button-disabled");
+            }
+            if(result == "CLOSED"){
+                $("#status-deur").text("Open");
+                $('#button-deur').removeClass("button-disabled");
+            }
+            if(result == "CLOSING"){
+                $("#status-deur").text("Closing...");
+                $('#button-deur').addClass("button-disabled");
+            }
+            if(result == "OPENING"){
+                $("#status-deur").text("Opening...");
+                $('#button-deur').addClass("button-disabled");
+            }
+        }});
+}
+
+function setDeur(){
+    $.ajax({
+        url: '../../update/setDeur.php', success: function(result){
+            getDeur();
+        }});
+}
+
+function getWeer(){
+    $.ajax({
+        url: '../../update/getWeer.php', success: function(result){
+            windkracht = parseFloat(result)*3.6;
+            $("#windkracht-status-text").text(windkracht + " (km/u)");
+        }});
+}
 
 // Veranderen Waterstand in CM:
 function veranderWaterstand(cm){

@@ -64,7 +64,7 @@ ul.login-elements > li > input{
     width: 100%;
 }
 
-ul.login-elements > li > button{
+ul.login-elements li button{
     border: none;
     font-size: 16px;
     color: #fff;
@@ -78,6 +78,9 @@ ul.login-elements > li > button{
     -ms-transition: background-color 0.3s ease-in-out;
     -o-transition: background-color 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out;
+}
+ul.login-elements a{
+    text-decoration: none;
 }
 
 ul.login-elements > li > button:hover{
@@ -286,4 +289,23 @@ div.button-close-open:hover{
 
 div.button-close-open:active{
     background-color: #8d2c21;
+}
+a.informatie-uitloggen{
+    text-decoration: none;
+    font-family: Ubuntu-Bold;
+    color: #2a75a7;
+    text-align: center;
+    width: 100%;
+}
+a.informatie-uitloggen > i{
+    margin-left: 10px;
+}
+.text-center{
+    text-align: center;
+}
+
+div.button-disabled{
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+    cursor: default;
 }
