@@ -45,6 +45,7 @@ function getServerStatus(){
     $.ajax({
         url: '../../update/getServerStatus.php', success: function(result){
             var x = result.split(',');
+            console.log(x);
             if(x[0] == "OFFLINE"){
                 veranderServerStatus(1, false);
             }else{
@@ -101,19 +102,23 @@ function getDeur(){
     $.ajax({
         url: '../../update/getDeur.php', success: function(result){
             if(result == "OPEN"){
-                $("#status-deur").text("Closed");
+                $("#status-deur").text("Open");
+                $("#button-deur").text("Closed");
                 $('#button-deur').removeClass("button-disabled");
             }
             if(result == "CLOSED"){
-                $("#status-deur").text("Open");
+                $("#status-deur").text("Closed");
+                $("#button-deur").text("Open");
                 $('#button-deur').removeClass("button-disabled");
             }
             if(result == "CLOSING"){
                 $("#status-deur").text("Closing...");
+                $("#button-deur").text("Open");
                 $('#button-deur').addClass("button-disabled");
             }
             if(result == "OPENING"){
                 $("#status-deur").text("Opening...");
+                $("#button-deur").text("Close");
                 $('#button-deur').addClass("button-disabled");
             }
         }});
