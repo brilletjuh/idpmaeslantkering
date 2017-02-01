@@ -29,8 +29,8 @@ if(!$sessionController->checkAuthorization()){
 
         <div class="card card-small">
             <div class="card-title">Server 1 status</div>
-            <img id="serverstatus1" src="../assets/img/server-on.png" class="server-icon">
-            <label id="server1" class="server-status server-on">Loading...</label>
+            <img id="serverstatus1" src="../assets/img/server-off.png" class="server-icon">
+            <label id="server1" class="server-status server-off">Loading...</label>
         </div>
 
         <div class="card card-small">

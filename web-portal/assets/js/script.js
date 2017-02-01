@@ -103,7 +103,7 @@ function getDeur(){
         url: '../../update/getDeur.php', success: function(result){
             if(result == "OPEN"){
                 $("#status-deur").text("Open");
-                $("#button-deur").text("Closed");
+                $("#button-deur").text("Close");
                 $('#button-deur').removeClass("button-disabled");
             }
             if(result == "CLOSED"){
