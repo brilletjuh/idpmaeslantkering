@@ -309,3 +309,122 @@ div.button-disabled{
     color: #7f8c8d;
     cursor: default;
 }
+
+div.card.simulation-container{
+    width: 1000px;
+    margin: 50px auto auto auto;
+    float: none;
+    display: block;
+}
+
+h2.simulation-title{
+    text-align: center;
+    color: #2a75a7;
+}
+
+div.sim-card{
+    display: inline-block;
+    padding: 20px;
+    -webkit-box-shadow: inset 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    inset 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         inset 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    border-radius: 5px;
+    margin: 20px;
+}
+
+div.sim-server{
+    width: 170px;
+}
+
+div.sim-server-title{
+    text-align: center;
+    font-size: 20px;
+}
+
+div.sim-server-status-1{
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+div.sim-server-status-2{
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+div.sim-deur-title{
+    text-align: center;
+    font-size: 20px;
+}
+
+div.sim-deur-timer{
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+div.sim-deur-status{
+    font-family: Ubuntu-Bold;
+}
+
+div.sim-water-title{
+    text-align: center;
+    font-size: 20px;
+}
+
+div.sim-water{
+    width: calc(100% - 80px);
+}
+
+div.sim-water-stand{
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+input#waterstand-slider{
+    width: 100%;
+}
+
+#sim-deur-button{
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    background-color: #c0392b;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 5px 15px 3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 5px 15px 3px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 5px 15px 3px rgba(50, 50, 50, 0.75);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#sim-deur-button:hover{
+    background-color: #da341d;
+}
+
+#sim-deur-button:active{
+    -webkit-box-shadow: inset 0px 5px 15px 3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    inset 0px 5px 15px 3px rgba(50, 50, 50, 0.75);
+    box-shadow:         inset 0px 5px 15px 3px rgba(50, 50, 50, 0.75);
+}
+#sim-deur-button:focus{
+    outline: none;
+}
+
+.troll-glasses{
+    position: absolute;
+    width: 200px;
+    top: -1058px;
+    left: -21px;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -ms-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+}
