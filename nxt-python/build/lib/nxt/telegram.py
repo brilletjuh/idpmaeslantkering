@@ -37,7 +37,7 @@ class Telegram(object):
     def __init__(self, direct=False, opcode=0, reply_req=True, pkt=None):
         self.reply = True
         if pkt:
-            self.pkt = StringIO(pkt)
+            self.pkt = StringIO(unicode(pkt, 'cp1252'))
             self.typ = self.parse_u8()
             self.opcode = self.parse_u8()
             if not self.is_reply():
@@ -55,6 +55,9 @@ class Telegram(object):
             self.add_u8(typ)
             self.add_u8(opcode)
 
+    def tostring(self):
+        return self.pkt.getvalue()
+
     def __str__(self):
         return self.pkt.getvalue()
 
@@ -62,28 +65,28 @@ class Telegram(object):
         return self.typ == Telegram.TYPE_REPLY
 
     def add_string(self, n_bytes, v):
-        self.pkt.write(pack('%ds' % n_bytes, v))
+        self.pkt.write(pack('%ds' % n_bytes, v).decode('cp1252'))
 
     def add_filename(self, fname):
-        self.pkt.write(pack('20s', fname))
+        self.pkt.write(pack('20s', fname).decode('cp1252'))
 
     def add_s8(self, v):
-        self.pkt.write(pack('<b', v))
+        self.pkt.write(pack('<b', v).decode('cp1252'))
 
     def add_u8(self, v):
-        self.pkt.write(pack('<B', v))
+        self.pkt.write(pack('<B', v).decode('cp1252'))
 
     def add_s16(self, v):
-        self.pkt.write(pack('<h', v))
+        self.pkt.write(pack('<h', v).decode('cp1252'))
 
     def add_u16(self, v):
-        self.pkt.write(pack('<H', v))
+        self.pkt.write(pack('<H', v).decode('cp1252'))
 
     def add_s32(self, v):
-        self.pkt.write(pack('<i', v))
+        self.pkt.write(pack('<i', v).decode('cp1252'))
 
     def add_u32(self, v):
-        self.pkt.write(pack('<I', v))
+        self.pkt.write(pack('<I', v).decode('cp1252'))
 
     def parse_string(self, n_bytes=0):
         if n_bytes:
@@ -93,22 +96,22 @@ class Telegram(object):
             return self.pkt.read()
 
     def parse_s8(self):
-        return unpack('<b', self.pkt.read(1))[0]
+        return unpack('<b', self.pkt.read(1).encode('cp1252'))[0]
 
     def parse_u8(self):
-        return unpack('<B', self.pkt.read(1))[0]
+        return unpack('<B', self.pkt.read(1).encode('cp1252'))[0]
 
     def parse_s16(self):
-        return unpack('<h', self.pkt.read(2))[0]
+        return unpack('<h', self.pkt.read(2).encode('cp1252'))[0]
 
     def parse_u16(self):
-        return unpack('<H', self.pkt.read(2))[0]
+        return unpack('<H', self.pkt.read(2).encode('cp1252'))[0]
 
     def parse_s32(self):
-        return unpack('<i', self.pkt.read(4))[0]
+        return unpack('<i', self.pkt.read(4).encode('cp1252'))[0]
 
     def parse_u32(self):
-        return unpack('<I', self.pkt.read(4))[0]
+        return unpack('<I', self.pkt.read(4).encode('cp1252'))[0]
 
     def check_status(self):
         nxt.error.check_status(self.parse_u8())

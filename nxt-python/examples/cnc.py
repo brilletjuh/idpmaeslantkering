@@ -12,8 +12,9 @@ import time
 from nxt.locator import Method
 b = nxt.find_one_brick(method=Method(usb=True, bluetooth=False))
 mx = nxt.Motor(b, nxt.PORT_A)
-my = nxt.Motor(b, nxt.PORT_B)
-motors = [mx, my]
+# my = nxt.Motor(b, nxt.PORT_B)
+motors = [mx]
+#, my]
 
 
 def turnmotor(m, power, degrees):
@@ -28,10 +29,10 @@ def turnmotor(m, power, degrees):
 # functions on a single motor, so be careful with this
 instructions = (
     [0, 0, 80, 180],
-    [0, 1, -40, 1080],
+#    [0, 1, -40, 1080],
     [1, 0, -80, 180],
     [2, 0, 80, 180],
-    [3, 1, 100, 360],
+#    [3, 1, 100, 360],
     [3, 0, -100, 360],
 )
 # how long from start until the last instruction is ended
