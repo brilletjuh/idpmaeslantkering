@@ -1,37 +1,17 @@
 /* Author: Matthias Krijgsman */
 
-/*
-* Maximale waterstand (cm) en windkracht (km/u)
-* voord de deuren om automatisch te sluiten
-* */
-var waterstandMAX = 1550;
-var windkrachtMAX = 78.2;
-
 var waterstand = 0;
 var windkracht = 0;
 
-$(document).ready(function(){
-    var globalRefresher = setInterval(refreshAll, 3000);
-    $(".login-container").css('left', '0');
-});
-
-$(".weerrapport-menu > li").click(function(){
-    resetTabView();
-    $(this).addClass('active');
-    $(".single-tab[tab='"+$(this).attr('tab')+"']").addClass('active');
-});
-
-$(".button-close-open").click(function(){
-   setDeur();
-});
-
-function refreshAll(){
+//  Ophalen en verversen van gegevens uit de database
+function updateCycle(){
     getServerStatus();
     getWaterstand();
     getDeur();
     getWeer();
 }
 
+//  Het resetten van de tabview (van de weerberichten)
 function resetTabView(){
     $(".single-tab").each(function(){
         $(this).removeClass('active');
@@ -40,7 +20,7 @@ function resetTabView(){
         $(this).removeClass('active');
     });
 }
-
+//  Het ophalen van de server status en het updaten daarvan op de front end
 function getServerStatus(){
     $.ajax({
         url: '../../update/getServerStatus.php', success: function(result){
@@ -58,6 +38,7 @@ function getServerStatus(){
         }});
 }
 
+//  Het ophalen van de waterstand en het updaten van de tekst labels
 function getWaterstand(){
     $.ajax({
         url: '../../update/getWaterstand.php', success: function(result){
@@ -97,6 +78,7 @@ function getWaterstand(){
         }});
 }
 
+//  Het ophalen van de deur status en het updaten van de tekst/button
 function getDeur(){
     $.ajax({
         url: '../../update/getDeur.php', success: function(result){
@@ -113,6 +95,7 @@ function getDeur(){
         }});
 }
 
+//  Status updaten van de deur
 function setDeur(){
     $.ajax({
         url: '../../update/setDeur.php', success: function(result){
@@ -120,6 +103,7 @@ function setDeur(){
         }});
 }
 
+//  De windkracht van de KNMI website scrapen
 function getWeer(){
     $.ajax({
         url: '../../update/getWeer.php', success: function(result){
@@ -133,7 +117,7 @@ function veranderWaterstand(cm){
     $("#waterstand").text(parseFloat(cm)/100);
 }
 
-// Veranderen Status Server
+// Veranderen front end status server
 function veranderServerStatus(server, status){
     if(server == 1){
         if(status){
@@ -162,3 +146,20 @@ function veranderServerStatus(server, status){
     }
 }
 
+/*
+ *   Handlen van de inputs
+ */
+$(document).ready(function(){
+    var globalRefresher = setInterval(updateCycle, 3000);
+    $(".login-container").css('left', '0');
+
+    $(".weerrapport-menu > li").click(function(){
+        resetTabView();
+        $(this).addClass('active');
+        $(".single-tab[tab='"+$(this).attr('tab')+"']").addClass('active');
+    });
+
+    $(".button-close-open").click(function(){
+        setDeur();
+    });
+});

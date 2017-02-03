@@ -4,7 +4,6 @@ require_once '../dataController.php';
 
 $dataController = new dController();
 
-
 if($_POST['data'][0] == '1'){
     $dataController->db_connection->query("UPDATE status SET SERVER_1='ONLINE' WHERE id='1'");
 }

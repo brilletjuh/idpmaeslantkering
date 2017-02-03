@@ -3,6 +3,7 @@
 
 class sController {
 
+    //  Simpele niet-beveiligde manier van inloggen
     function login($user, $pass){
         $dataController = new dController();
         $stmt = $dataController->db_connection->prepare("SELECT id FROM users WHERE users.username='".$user."' AND users.password='".$pass."'");
@@ -22,6 +23,7 @@ class sController {
         session_destroy();
     }
 
+    //  Checken of de gebruiker rechten heeft om de pagina te bezoeken
     function checkAuthorization(){
         if(isset($_SESSION['logged'])){
             return true;

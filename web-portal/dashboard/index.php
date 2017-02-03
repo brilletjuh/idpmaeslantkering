@@ -8,6 +8,7 @@ if($_GET['a'] == 'logout'){
     header("Location: ../");
 }
 
+//  Checken of de gebruiker ingelogd is
 if(!$sessionController->checkAuthorization()){
     header("Location: ../");
 }
